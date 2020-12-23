@@ -1,6 +1,32 @@
 * { box-sizing: border-box; }
 body { margin: 0 }
 
+:root {
+  --margin-lg: 32px;
+  --margin-md: 16px;
+  --margin-sm: 8px;
+  --radius-main: 8px;
+  --shadow-main: 0px 3px 6px rgba(110, 116, 134, 0.24);
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 { margin: 0 }
+p { margin: 0 }
+
+.flex { display: flex }
+.flex.space-around { justify-content: space-around }
+.flex.space-between { justify-content: space-between }
+.flex.center { justify-content: center }
+
+.flex-1 { flex: 1 }
+.flex-2 { flex: 2 }
+.flex-3 { flex: 3 }
+
 .main-screen {
   max-width: 500px;
   margin: 0 auto;
