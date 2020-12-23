@@ -7,7 +7,6 @@ body { margin: 0 }
   --margin-sm: 8px;
   --radius-main: 8px;
   --shadow-main: 0px 3px 6px rgba(110, 116, 134, 0.24);
-
 }
 
 h1, h2, h3, h4, h5, h6 { margin: 0 }
@@ -22,14 +21,55 @@ p { margin: 0 }
 .flex-2 { flex: 2 }
 .flex-3 { flex: 3 }
 
+.home-screen header {
+  background-color: green;
+  position: relative;
+}
+.home-screen section {
+  background-color: yellow
+}
 .home-screen {
   max-width: 500px;
   margin: 0 auto;
   background-color: red;
 }
-header {
-  background-color: green;
+.home-screen .search-box {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #dfe7ef;
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-main);
+  outline: none;
+  padding: 0 1rem;
+  position: absolute;
+  bottom: -22px;
 }
-section {
-  background-color: yellow
+
+.home-screen main {
+  padding-top: var(--margin-lg);
+}
+.home-screen section {
+  margin-top: var(--margin-md);
+}
+
+.cards-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+.cards-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.card {
+  min-width: 160px;
+  height: 200px;
+  background-color: brown;
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-main);
+  margin: var(--margin-sm);
 }
