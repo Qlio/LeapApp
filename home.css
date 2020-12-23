@@ -1,0 +1,14 @@
+* { box-sizing: border-box; }
+body { margin: 0 }
+
+.main-screen {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: red;
+}
+header {
+  background-color: green;
+}
+section {
+  background-color: yellow
+}
