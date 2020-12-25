@@ -1,5 +1,12 @@
+.flex {
+  display: flex;
+}
+
 .hello {
+  background-color: silver;
   color: red;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .world {
