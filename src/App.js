@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
-import { Switch, Route, useHistory } from 'react-router-dom'
+import { Switch, Route, useHistory, Link } from 'react-router-dom'
 
 import HomePage from './pages/Home'
 import LoginPage from './pages/Login'
 import ProfilePage from './pages/Profile'
 import FriendRequestsPage from './pages/FriendRequests'
+
+import AuthContext from './AuthContext'
 
 import firebase, { firestore } from './firebase'
 
@@ -26,27 +28,29 @@ const App = () => {
             }
             window.navigator.geolocation.getCurrentPosition(onSuccess, onError)
         }
-    }, [])
+    }, [user])
 
 
     useEffect(() => {
         const unsubscribe = firebase.auth().onAuthStateChanged(async (user) => {
-            if (!user) {
+            console.log("TODO: Auth state changed")
+            if (!user) { // Not logged in
                 setUser({})
                 history.replace('/login')
                 setIsLoading(false);
-                return
+                return;
             }
 
             const doc = await firestore.doc(`users/${ user.uid }`).get()
-            setUser({
+            const newUserState = {
                 uid: user.uid,
                 phone: user.phoneNumber,
                 ...(doc.data() || {}),
-            });
+            }
+            setUser(newUserState);
 
-            if (!user.name) {
-                // history.replace('/profile')
+            if (!newUserState.username) {
+                history.replace('/profile')
             }
 
             setIsLoading(false);
@@ -64,20 +68,28 @@ const App = () => {
     }
 
     return (
-        <Switch>
-            <Route path="/login">
-                <LoginPage user={ user } />
-            </Route>
-            <Route path="/profile">
-                <ProfilePage user={ user } setUser={ setUser } />
-            </Route>
-            <Route path="/friend-requests">
-                <FriendRequestsPage user={ user } />
-            </Route>
-            <Route path="/">
-                <HomePage user={ user } />
-            </Route>
-        </Switch>
+        <div>
+            <nav>
+                <Link to="/home">Home</Link>
+                <Link to="/profile">Profile</Link>
+            </nav>
+            <AuthContext.Provider value={{ user, setUser }}>
+                <Switch>
+                    <Route path="/login">
+                        <LoginPage />
+                    </Route>
+                    <Route path="/profile">
+                        <ProfilePage />
+                    </Route>
+                    <Route path="/friend-requests">
+                        <FriendRequestsPage />
+                    </Route>
+                    <Route path="/">
+                        <HomePage />
+                    </Route>
+                </Switch>
+            </AuthContext.Provider>
+        </div>
     );
 }
 

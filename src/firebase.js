@@ -3,12 +3,12 @@ import 'firebase/auth'
 import 'firebase/firestore'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCVIjQWzKXWD9eGIiwjYjv3jYn476xS6OA",
-    authDomain: "leaply-2863c.firebaseapp.com",
-    projectId: "leaply-2863c",
-    storageBucket: "leaply-2863c.appspot.com",
-    messagingSenderId: "945384938342",
-    appId: "1:945384938342:web:e5179d6caef8cadceb86a7",
+  apiKey: "AIzaSyC7eHvHD9OXVIEUU1K_KyavzPfhdkhZYaM",
+  authDomain: "leaply-nest.firebaseapp.com",
+  projectId: "leaply-nest",
+  storageBucket: "leaply-nest.appspot.com",
+  messagingSenderId: "294575023785",
+  appId: "1:294575023785:web:a8cda7dfa764fa86a9abb8",
 };
 
 firebase.initializeApp(firebaseConfig);

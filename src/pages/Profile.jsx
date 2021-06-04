@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 
 import { firestore } from '../firebase'
+import AuthContext from '../AuthContext'
 
-const ProfilePage = ({ user, setUser }) => {
+const ProfilePage = () => {
+    const { user, setUser } = useContext(AuthContext);
     const [ profile, setProfile ] = useState({
-        name: '',
+        username: '',
         age: '',
     })
 
@@ -41,7 +43,7 @@ const ProfilePage = ({ user, setUser }) => {
     return (
         <form onSubmit={ onSubmit }>
             <h1>Profile Page</h1>
-            name: <input type="text" onChange={ handleInputChange('name') } value={ profile.name } />
+            username: <input type="text" onChange={ handleInputChange('username') } value={ profile.username } />
             age: <input type="text" onChange={ handleInputChange('age') } value={ profile.age } />
             <button type="submit">Хадгалах</button>
         </form>

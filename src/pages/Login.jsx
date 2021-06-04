@@ -1,10 +1,13 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import firebase from '../firebase'
 
+import AuthContext from '../AuthContext'
+
 import '../styles/login.scss'
 
-const LoginPage = ({ user }) => {
+const LoginPage = () => {
+    const { user } = useContext(AuthContext);
     const [ value, setValue ] = useState('')
     const [ isSent, setIsSent ] = useState(false)
     const recaptchaVerifier = useRef()
