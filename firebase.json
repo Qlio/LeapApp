@@ -10,5 +10,11 @@
       "**/.*",
       "**/node_modules/**"
     ]
+  },
+  "emulators": {
+    "functions": {
+      "port": 5001,
+      "host": "0.0.0.0"
+    }
   }
 }
